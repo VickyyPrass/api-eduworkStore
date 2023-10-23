@@ -32,7 +32,7 @@ function decodeToken() {
     };
 }
 
-// middlewae untuk cek hak akses
+// middleware untuk cek hak akses
 function police_check(action, subject) {
     return function (req, res, next) {
         let policy = policyFor(req.user);
@@ -49,5 +49,5 @@ function police_check(action, subject) {
 
 module.exports = {
     decodeToken,
-    police_check
+    police_check,
 };

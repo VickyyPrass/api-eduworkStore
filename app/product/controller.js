@@ -235,7 +235,7 @@ const index = async (req, res, next) => {
     try {
         let {
             skip = 0,
-            limit = 10,
+            limit = "",
             q = "",
             category = "",
             tags = [],
@@ -287,9 +287,27 @@ const index = async (req, res, next) => {
     }
 };
 
+const indexByID = async (req, res, next) => {
+    try {
+        let ObjectId = require("mongodb").ObjectId;
+        let product_id = new ObjectId(req.params.id);
+        let product = await Product.find({
+            _id: product_id,
+        })
+            .populate("category")
+            .populate("tags");
+        return res.json({
+            data: product,
+        });
+    } catch (err) {
+        next(err);
+    }
+};
+
 module.exports = {
     store,
     index,
     update,
     destroy,
+    indexByID,
 };

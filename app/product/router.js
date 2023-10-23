@@ -6,6 +6,7 @@ const productController = require("./controller");
 const { police_check } = require("../../middlewares");
 
 router.get("/products", productController.index);
+router.get("/products/:id", productController.indexByID);
 
 router.post(
     "/products",

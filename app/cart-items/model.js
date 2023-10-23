@@ -1,3 +1,5 @@
+// model ini digunakan pada cart-items
+
 const mongoose = require("mongoose");
 const { model, Schema } = mongoose;
 
